@@ -1,0 +1,54 @@
+generated: '2026-07-21'
+method: searched
+source: live HTTP probes of with.co and with.us
+notes: >-
+  The original with.co domain 301-redirects to with.us (company rebranded from
+  Withco to With). with.us is a client-rendered SPA behind Cloudflare whose
+  origin catch-all returns HTTP 200 with the HTML app shell for every unknown
+  path, so 200 responses on /.well-known/ paths are soft 404s (content-type
+  text/html, no actual document) and were not saved as documents. The one real
+  machine-readable surface is /robots.txt, which carries a Cloudflare Managed
+  Content Signals block (search=yes, ai-train=no, use=reference) plus explicit
+  Disallow rules for AI crawlers (Amazonbot, Applebot-Extended, Bytespider,
+  CCBot, ClaudeBot, Google-Extended, GPTBot, meta-externalagent); the origin
+  appends its SPA HTML shell after the managed block, and the file is saved
+  verbatim as fetched.
+hosts:
+- host: https://with.co
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://with.us
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    soft_404: true
+  - path: /.well-known/openid-configuration
+    status: 200
+    soft_404: true
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    soft_404: true
+  - path: /.well-known/api-catalog
+    status: 200
+    soft_404: true
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    soft_404: true
+  - path: /llms.txt
+    status: 200
+    soft_404: true
+  - path: /robots.txt
+    status: 200
+    file: withco-robots.txt
+    content_signal: search=yes,ai-train=no,use=reference

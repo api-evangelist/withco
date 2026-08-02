@@ -1,8 +1,23 @@
 aid: withco
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/withco.png
 name: Withco
-description: Withco is a company surfaced as a portfolio company of canaan-partners, initialized-capital
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: Withco, now operating as With at with.us (the original with.co domain 301-redirects
+  there), is rebuilding main street one share at a time. The company helps small business owners
+  buy the commercial buildings they operate in, stacking the owner's investment, seller financing,
+  and community investor capital to meet the deal price, grounding offers in comparable sales,
+  and giving each business a public investor page to tell its story to potential backers. Withco
+  is a consumer/community real-estate platform and publishes no public developer API surface.
 url: https://raw.githubusercontent.com/api-evangelist/withco/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,9 +28,15 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
+- Real Estate
+- Small Business
+- Commercial Real Estate
+- Investing
+- Community Ownership
+- Main Street
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -24,4 +45,27 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://with.co/
+  url: https://with.us/
+- type: About
+  url: https://with.us/about-us
+- type: Support
+  url: https://with.us/faq
+- type: TermsOfService
+  url: https://with.us/terms
+- type: PrivacyPolicy
+  url: https://with.us/privacy
+- type: Disclosures
+  url: https://with.us/disclosures
+- type: WellKnown
+  url: well-known/withco-well-known.yml
+- type: ContentSignal
+  url: well-known/withco-robots.txt
+- type: LLMsTxt
+  url: llms/withco-llms.txt
+- type: DomainSecurity
+  url: security/withco-domain-security.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: minimal
+  artifacts_added: 4
+  pass: local-v1
